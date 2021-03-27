@@ -51,8 +51,9 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
   AudioCache audioCache = AudioCache();
   double _currentSliderValue = 1;
   
-  void play(){
-    audioCache.play("audio/二.mp3");
+  void play(String language, String word){
+    //audioCache.play("audio/二.mp3");
+    audioCache.play('audio/pronunciation_' + language + '_' + word + '.mp3');
   }
 
   Widget build(BuildContext context){
@@ -124,30 +125,27 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
 
               children: <Widget>[
 	        RaisedButton(
-                  child: Text('Raised Button'),
+                  child: Text('adjektiv\nadjective'),
                   onPressed: (){
-                    play();
+                    play('sv', 'adjektiv');
                     print('Raised Pressed');
                   },
                 ),
 	        RaisedButton(
                   child: Text('Raised Button'),
                   onPressed: (){
-                    play();
                     print('Raised Pressed');
                   },
                 ),
 	        RaisedButton(
                   child: Text('Raised Button'),
                   onPressed: (){
-                    play();
                     print('Raised Pressed');
                   },
                 ),
 	        RaisedButton(
                   child: Text('Raised Button'),
                   onPressed: (){
-                    play();
                     print('Raised Pressed');
                   },
                 ),
@@ -159,34 +157,6 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
 	      mainAxisSpacing: 8.0,
 
               children: <Widget>[
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
               ],
             ),
             GridView.count(
@@ -195,34 +165,6 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
 	      mainAxisSpacing: 8.0,
 
               children: <Widget>[
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
               ],
             ),
             GridView.count(
@@ -231,34 +173,6 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
 	      mainAxisSpacing: 8.0,
 
               children: <Widget>[
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
-	        RaisedButton(
-                  child: Text('Raised Button'),
-                  onPressed: (){
-                    play();
-                    print('Raised Pressed');
-                  },
-                ),
               ],
             ),
 	  ],
