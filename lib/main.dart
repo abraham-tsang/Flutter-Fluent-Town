@@ -132,8 +132,9 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
                   },
                 ),
 	        RaisedButton(
-                  child: Text('Raised Button'),
+                  child: Text('10月'),
                   onPressed: (){
+		    play('ja', '10月');
                     print('Raised Pressed');
                   },
                 ),
