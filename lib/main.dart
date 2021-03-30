@@ -20,18 +20,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-	/*
-	  RaisedButton(
-            child: Text('Mock Exam'),
-            onPressed: (){
-              print('Mock Exam Pressed');
-	      Navigator.push(
-	        context,
-		MaterialPageRoute(builder: (context) => MyStatelessHomePage(number: 3)),
-	      );
-            },
-	  ),
-	  */
 class MyHomePage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
@@ -47,7 +35,7 @@ class MyStatelessHomePage extends StatelessWidget{
     return MaterialApp(
       home: Scaffold(
         body: Center(
-	  child: Text(number.toString()),
+	  child: Text(number),
 	),
       ),
     );
@@ -64,7 +52,8 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
 
   AudioCache audioCache = AudioCache();
   double _currentSliderValue = 1;
-  
+  TextEditingController controller = new TextEditingController();
+
   void play(String filename){
     audioCache.play('audio/' + filename);
   }
@@ -76,28 +65,17 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
       child: Scaffold(
         appBar: AppBar(
 	  actions: <Widget>[
-	    Text(_currentSliderValue.round().toString()),
-	    RaisedButton(
-              child: Icon(Icons.arrow_back),
-              onPressed: (){
-	        if(_currentSliderValue > 2){
-	          setState((){
-	            _currentSliderValue--;
-	          });
-	        }
-                print('left Pressed');
-              },
-	    ),
-	    RaisedButton(
-              child: Icon(Icons.arrow_forward),
-              onPressed: (){
-	        if(_currentSliderValue < 624){
-	          setState((){
-	            _currentSliderValue++;
-	          });
-	        }
-                print('Right Pressed');
-              },
+	    Container(
+	      width: 200.0,
+	      child: TextField(
+	        controller: controller,
+                keyboardType: TextInputType.number,
+	        style: TextStyle(
+                  fontSize: 20.0,
+                  height: 2.0,
+                  color: Colors.black    
+                ),
+              ),
 	    ),
 	    RaisedButton(
               child: Text('Mock Exam'),
@@ -105,7 +83,7 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
                 print('Mock Exam Pressed');
 	        Navigator.push(
 	          context,
-	          MaterialPageRoute(builder: (context) => MyStatelessHomePage(number: 3)),
+	          MaterialPageRoute(builder: (context) => MyStatelessHomePage(number: controller.text)),
 	        );
               },
 	    ),
