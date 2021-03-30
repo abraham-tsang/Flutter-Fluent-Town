@@ -74,73 +74,57 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
       initialIndex: 0,
       length: 4,
       child: Scaffold(
-        appBar: PreferredSize(
-	  preferredSize: Size.fromHeight(160.0),
-	  child: AppBar(
-	    automaticallyImplyLeading: false,
-	    actions: <Widget>[
-	      Text(_currentSliderValue.round().toString()),
-	      RaisedButton(
-                child: Icon(Icons.arrow_back),
-                onPressed: (){
-		  if(_currentSliderValue > 2){
-	            setState((){
-		      _currentSliderValue--;
-		    });
-		  }
-                  print('left Pressed');
-                },
-	      ),
-	      Slider(
-                value: _currentSliderValue,
-	        min: 1,
-	        max: 625,
-	        divisions: 625,
-	        label: _currentSliderValue.round().toString(),
-	        onChanged: (double value){
+        appBar: AppBar(
+	  actions: <Widget>[
+	    Text(_currentSliderValue.round().toString()),
+	    RaisedButton(
+              child: Icon(Icons.arrow_back),
+              onPressed: (){
+	        if(_currentSliderValue > 2){
 	          setState((){
-	            _currentSliderValue = value;
-		  });
-	        },
-	      ),  
-	      RaisedButton(
-                child: Icon(Icons.arrow_forward),
-                onPressed: (){
-		  if(_currentSliderValue < 624){
-	            setState((){
-		      _currentSliderValue++;
-		    });
-		  }
-                  print('Right Pressed');
-                },
+	            _currentSliderValue--;
+	          });
+	        }
+                print('left Pressed');
+              },
+	    ),
+	    RaisedButton(
+              child: Icon(Icons.arrow_forward),
+              onPressed: (){
+	        if(_currentSliderValue < 624){
+	          setState((){
+	            _currentSliderValue++;
+	          });
+	        }
+                print('Right Pressed');
+              },
+	    ),
+	    RaisedButton(
+              child: Text('Mock Exam'),
+              onPressed: (){
+                print('Mock Exam Pressed');
+	        Navigator.push(
+	          context,
+	          MaterialPageRoute(builder: (context) => MyStatelessHomePage(number: 3)),
+	        );
+              },
+	    ),
+	  ],
+	  bottom: TabBar(
+	    tabs: <Widget>[
+	      Tab(
+	        text: "Swedish",
 	      ),
-	      RaisedButton(
-                child: Text('Mock Exam'),
-                onPressed: (){
-                  print('Mock Exam Pressed');
-	          Navigator.push(
-	            context,
-	            MaterialPageRoute(builder: (context) => MyStatelessHomePage(number: 3)),
-	          );
-                },
+	      Tab(
+	        text: "Japanese",
+	      ),
+	      Tab(
+	        text: "Portuguese",
+	      ),
+	      Tab(
+	        text: "Chinese",
 	      ),
 	    ],
-	    bottom: TabBar(
-	      tabs: <Widget>[
-	        Tab(
-	          text: "Swedish",
-	        ),
-	        Tab(
-	          text: "Japanese",
-	        ),
-	        Tab(
-	          text: "Portuguese",
-	        ),
-	        Tab(
-	          text: "Chinese",
-	        ),
-	      ],
-	    ),
 	  ),
 	),
 	body: TabBarView(
