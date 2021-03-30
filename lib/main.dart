@@ -31,11 +31,30 @@ class MyHomePage extends StatelessWidget{
             child: Text('Mock Exam'),
             onPressed: (){
               print('Mock Exam Pressed');
+	      Navigator.push(
+	        context,
+		MaterialPageRoute(builder: (context) => MyStatelessHomePage(number: 3)),
+	      );
             },
 	  ),
 	],
       ),
       body: MyStatefulHomePage(),
+    );
+  }
+}
+
+class MyStatelessHomePage extends StatelessWidget{
+  var number;
+  MyStatelessHomePage({Key key, @required this.number}) : super(key: key);
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+	  child: Text(number.toString()),
+	),
+      ),
     );
   }
 }
@@ -52,7 +71,6 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
   double _currentSliderValue = 1;
   
   void play(String filename){
-    //audioCache.play("audio/二.mp3");
     audioCache.play('audio/' + filename);
   }
 
