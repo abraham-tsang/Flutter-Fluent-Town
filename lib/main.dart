@@ -48,8 +48,10 @@ class MyStatelessHomePage extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       home: Scaffold(
-        body: Center(
-	  child: Text(data[0][0]),
+        appBar: AppBar(
+	  actions: <Widget>[
+	    Text(data[0][0]),
+	  ],
 	),
       ),
     );
