@@ -48,6 +48,8 @@ class MyStatelessHomePage extends StatelessWidget{
 
   AudioCache audioCache = AudioCache();
   TextEditingController controller = new TextEditingController();
+  var language = 0;
+  var word = 0;
 
   void play(String filename){
     audioCache.play('audio/' + filename);
@@ -59,9 +61,9 @@ class MyStatelessHomePage extends StatelessWidget{
         body: Column(
 	  children: <Widget>[
 	    RaisedButton(
-	      child: Text(data[0][0].split(' ')[0]),
+	      child: Text(data[language][word].split(' ')[0]),
 	      onPressed: (){
-	        play(data[0][0].split('+')[1]);
+	        play(data[language][word].split('+')[1]);
 	      }
 	    ),
 	    Container(
@@ -74,6 +76,17 @@ class MyStatelessHomePage extends StatelessWidget{
                   color: Colors.black    
                 ),
               ),
+	    ),
+	    RaisedButton(
+	      child: Text("Get answer"),
+	      onPressed: (){
+	        showDialog(
+		  context: context,
+		  builder: (_) => new AlertDialog(
+		    title: Text("sdf"),
+		  ),
+		);
+	      }
 	    ),
 	  ],
 	),
