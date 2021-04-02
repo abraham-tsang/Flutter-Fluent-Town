@@ -45,12 +45,36 @@ class MyStatelessHomePage extends StatelessWidget{
   ];
   MyStatelessHomePage({Key key, @required this.number}) : super(key: key);
   @override
+
+  AudioCache audioCache = AudioCache();
+  TextEditingController controller = new TextEditingController();
+
+  void play(String filename){
+    audioCache.play('audio/' + filename);
+  }
+
   Widget build(BuildContext context){
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-	  actions: <Widget>[
-	    Text(data[0][0]),
+        body: Column(
+	  children: <Widget>[
+	    RaisedButton(
+	      child: Text(data[0][0].split(' ')[0]),
+	      onPressed: (){
+	        play(data[0][0].split('+')[1]);
+	      }
+	    ),
+	    Container(
+	      width: 200.0,
+	      child: TextField(
+	        controller: controller,
+	        style: TextStyle(
+                  fontSize: 20.0,
+                  height: 2.0,
+                  color: Colors.black    
+                ),
+              ),
+	    ),
 	  ],
 	),
       ),
