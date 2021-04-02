@@ -75,6 +75,10 @@ class MyStatelessHomePage extends StatelessWidget{
                   height: 2.0,
                   color: Colors.black    
                 ),
+		onSubmitted: (String value){
+		  word++;
+		  print(word.toString());
+		}
               ),
 	    ),
 	    RaisedButton(
