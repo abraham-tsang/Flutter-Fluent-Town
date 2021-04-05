@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
+import 'dart:math';
 //import 'package:audioplayers/audioplayers.dart';
 
 void main() {
@@ -63,9 +64,8 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
   }
 
   Widget build(BuildContext context){
-    setState((){
-      language = int.parse(widget.number.split('-')[1]);
-    });
+    language = int.parse(widget.number.split('-')[1]);
+
     return MaterialApp(
       home: Scaffold(
         body: Column(
@@ -133,7 +133,9 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
   AudioCache audioCache = AudioCache();
   double _currentSliderValue = 1;
   TextEditingController controller = new TextEditingController();
+  TextEditingController controller2 = new TextEditingController();
   var number2;
+  var dropdownValue;
 
   void play(String filename){
     audioCache.play('audio/' + filename);
@@ -147,7 +149,20 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
         appBar: AppBar(
 	  actions: <Widget>[
 	    Container(
-	      width: 200.0,
+	      width: 50.0,
+	      child: TextField(
+	        controller: controller2,
+                keyboardType: TextInputType.number,
+	        style: TextStyle(
+                  fontSize: 20.0,
+                  height: 2.0,
+                  color: Colors.black    
+                ),
+              ),
+	    ),
+	    SizedBox(width: 20.0,),
+	    Container(
+	      width: 50.0,
 	      child: TextField(
 	        controller: controller,
                 keyboardType: TextInputType.number,
@@ -161,11 +176,10 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
 	    RaisedButton(
               child: Text('Mock Exam'),
               onPressed: (){
-                print('Mock Exam Pressed');
-		number2 = 3; //DefaultTabController.of(context).index;
+                print(dropdownValue);
 	        Navigator.push(
 	          context,
-	          MaterialPageRoute(builder: (context) => MyStatefulHomePage2(number: controller.text + '-' + number2.toString())),
+	          MaterialPageRoute(builder: (context) => MyStatefulHomePage2(number: controller.text + '-' + controller2.text)),
 	        );
               },
 	    ),
