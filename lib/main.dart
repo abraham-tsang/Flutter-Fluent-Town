@@ -83,10 +83,13 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
                   color: Colors.black    
                 ),
 		onSubmitted: (String value){
-		  setState((){
-		    word++;
-		  });
-		  print(word.toString());
+		  if(value == data[language][word].split(' ')[1].split('+')[0]){
+		    if(word < int.parse(widget.number)){
+		      setState((){
+		        word++;
+		      });
+		    }
+		  }
 		}
               ),
 	    ),
