@@ -63,6 +63,9 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
   }
 
   Widget build(BuildContext context){
+    setState((){
+      language = int.parse(widget.number.split('-')[1]);
+    });
     return MaterialApp(
       home: Scaffold(
         body: Column(
@@ -86,7 +89,7 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
 		onSubmitted: (String value){
 		  controller.clear();
 		  if(value == data[language][word].split(' ')[1].split('+')[0]){
-		    if(word < int.parse(widget.number) - 1){
+		    if(word < int.parse(widget.number.split('-')[0]) - 1){
 		      setState((){
 		        word++;
 		      });
@@ -130,6 +133,7 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
   AudioCache audioCache = AudioCache();
   double _currentSliderValue = 1;
   TextEditingController controller = new TextEditingController();
+  var number2;
 
   void play(String filename){
     audioCache.play('audio/' + filename);
@@ -158,9 +162,10 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
               child: Text('Mock Exam'),
               onPressed: (){
                 print('Mock Exam Pressed');
+		number2 = 3; //DefaultTabController.of(context).index;
 	        Navigator.push(
 	          context,
-	          MaterialPageRoute(builder: (context) => MyStatefulHomePage2(number: controller.text)),
+	          MaterialPageRoute(builder: (context) => MyStatefulHomePage2(number: controller.text + '-' + number2.toString())),
 	        );
               },
 	    ),
