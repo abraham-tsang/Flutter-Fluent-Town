@@ -66,6 +66,7 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
     return MaterialApp(
       home: Scaffold(
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
 	  children: <Widget>[
 	    RaisedButton(
 	      child: Text(data[language][word].split(' ')[0]),
@@ -83,11 +84,18 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
                   color: Colors.black    
                 ),
 		onSubmitted: (String value){
+		  controller.clear();
 		  if(value == data[language][word].split(' ')[1].split('+')[0]){
-		    if(word < int.parse(widget.number)){
+		    if(word < int.parse(widget.number) - 1){
 		      setState((){
 		        word++;
 		      });
+		    }
+		    else{
+	              Navigator.push(
+	                context,
+	                MaterialPageRoute(builder: (context) => MyStatefulHomePage()),
+	              );
 		    }
 		  }
 		}
@@ -99,7 +107,7 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
 	        showDialog(
 		  context: context,
 		  builder: (_) => new AlertDialog(
-		    title: Text(widget.number),
+		    title: Text(data[language][word].split(' ')[1].split('+')[0]),
 		  ),
 		);
 	      }
