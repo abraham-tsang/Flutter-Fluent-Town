@@ -83,7 +83,9 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
                   color: Colors.black    
                 ),
 		onSubmitted: (String value){
-		  word++;
+		  setState((){
+		    word++;
+		  });
 		  print(word.toString());
 		}
               ),
