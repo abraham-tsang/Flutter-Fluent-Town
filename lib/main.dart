@@ -58,13 +58,22 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
   TextEditingController controller = new TextEditingController();
   var language = 0;
   var word = 0;
+  var tested = [];
+  var random = new Random();
+
+  @override
+  void initState(){
+    language = int.parse(widget.number.split('-')[1]);
+    tested.addAll(data[language].sublist(0, int.parse(widget.number.split('-')[0])));
+    tested.shuffle(random);
+    print(tested);
+  }
 
   void play(String filename){
     audioCache.play('audio/' + filename);
   }
 
   Widget build(BuildContext context){
-    language = int.parse(widget.number.split('-')[1]);
 
     return MaterialApp(
       home: Scaffold(
@@ -72,9 +81,9 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
           mainAxisAlignment: MainAxisAlignment.center,
 	  children: <Widget>[
 	    RaisedButton(
-	      child: Text(data[language][word].split(' ')[0]),
+	      child: Text(tested[word].split(' ')[0]),
 	      onPressed: (){
-	        play(data[language][word].split('+')[1]);
+	        play(tested[word].split('+')[1]);
 	      }
 	    ),
 	    Container(
@@ -88,7 +97,7 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
                 ),
 		onSubmitted: (String value){
 		  controller.clear();
-		  if(value == data[language][word].split(' ')[1].split('+')[0]){
+		  if(value == tested[word].split(' ')[1].split('+')[0]){
 		    if(word < int.parse(widget.number.split('-')[0]) - 1){
 		      setState((){
 		        word++;
@@ -110,7 +119,7 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
 	        showDialog(
 		  context: context,
 		  builder: (_) => new AlertDialog(
-		    title: Text(data[language][word].split(' ')[1].split('+')[0]),
+		    title: Text(tested[word].split(' ')[1].split('+')[0]),
 		  ),
 		);
 	      }
