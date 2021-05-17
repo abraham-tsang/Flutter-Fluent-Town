@@ -161,7 +161,7 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
         appBar: AppBar(
 	  actions: <Widget>[
 	    Container(
-	      width: 50.0,
+	      width: 100.0,
 	      child: TextField(
 	        controller: controller2,
                 keyboardType: TextInputType.number,
@@ -170,11 +170,12 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
                   height: 2.0,
                   color: Colors.black    
                 ),
+		decoration: InputDecoration(hintText: "Language",),
               ),
 	    ),
 	    SizedBox(width: 20.0,),
 	    Container(
-	      width: 50.0,
+	      width: 170.0,
 	      child: TextField(
 	        controller: controller,
                 keyboardType: TextInputType.number,
@@ -183,6 +184,7 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
                   height: 2.0,
                   color: Colors.black    
                 ),
+		decoration: InputDecoration(hintText: "Amount of words",),
               ),
 	    ),
 	    RaisedButton(
