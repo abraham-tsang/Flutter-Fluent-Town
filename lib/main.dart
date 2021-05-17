@@ -113,6 +113,9 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
 		}
               ),
 	    ),
+	    Text(''),
+	    Text(''),
+	    Text(''),
 	    RaisedButton(
 	      child: Text("Get answer"),
 	      onPressed: (){
