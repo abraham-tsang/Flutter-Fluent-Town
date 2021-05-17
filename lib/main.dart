@@ -79,6 +79,7 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
       home: Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+	  crossAxisAlignment: CrossAxisAlignment.stretch,
 	  children: <Widget>[
 	    RaisedButton(
 	      child: Text(tested[word].split(' ')[0]),
