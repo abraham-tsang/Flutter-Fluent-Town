@@ -63,7 +63,7 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
 
   @override
   void initState(){
-    language = int.parse(widget.number.split('-')[1]);
+    language = int.parse(widget.number.split('-')[1]) - 1;
     tested.addAll(data[language].sublist(0, int.parse(widget.number.split('-')[0])));
     tested.shuffle(random);
     print(tested);
@@ -199,16 +199,16 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
 	  bottom: TabBar(
 	    tabs: <Widget>[
 	      Tab(
-	        text: "Swedish",
+	        text: "1. Swedish",
 	      ),
 	      Tab(
-	        text: "Japanese",
+	        text: "2. Japanese",
 	      ),
 	      Tab(
-	        text: "Portuguese",
+	        text: "3. Portuguese",
 	      ),
 	      Tab(
-	        text: "Chinese",
+	        text: "4. Chinese",
 	      ),
 	    ],
 	  ),
