@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'dart:math';
-//import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() {
   runApp(MyApp());
@@ -70,7 +70,7 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
   }
 
   void play(String filename){
-    audioCache.play('audio/' + filename);
+    audioCache.play('audio/' + filename, mode: PlayerMode.LOW_LATENCY);
   }
 
   Widget build(BuildContext context){
@@ -147,7 +147,7 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
   var dropdownValue;
 
   void play(String filename){
-    audioCache.play('audio/' + filename);
+    audioCache.play('audio/' + filename, mode: PlayerMode.LOW_LATENCY);
   }
 
   Widget build(BuildContext context){
