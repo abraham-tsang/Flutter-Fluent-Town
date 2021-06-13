@@ -57,14 +57,18 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
   AudioCache audioCache = AudioCache();
   TextEditingController controller = new TextEditingController();
   var language = 0;
-  var word = 0; // need to change this
+  var start = 0;
+  var end = 0;
+  var word = 0;
   var tested = [];
   var random = new Random();
 
   @override
   void initState(){
-    language = int.parse(widget.number.split('-')[1]) - 1; // need to change this
-    tested.addAll(data[language].sublist(0, int.parse(widget.number.split('-')[0]))); // need to change this
+    language = int.parse(widget.number.split('-')[2]) - 1;
+    start = int.parse(widget.number.split('-')[0]) - 1;
+    end = int.parse(widget.number.split('-')[1]);
+    tested.addAll(data[language].sublist(start, end));
     tested.shuffle(random);
     print(tested);
   }
@@ -99,7 +103,7 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
 		onSubmitted: (String value){
 		  controller.clear();
 		  if(value == tested[word].split(' ')[1].split('+')[0]){
-		    if(word < int.parse(widget.number.split('-')[0]) - 1){
+		    if(word < (end - start) - 1){
 		      setState((){
 		        word++;
 		      });
@@ -176,7 +180,7 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
               ),
 	    ),
 	    SizedBox(width: 20.0,),
-	    Container( // need to change this
+	    Container(
 	      width: 70.0,
 	      child: TextField(
 	        controller: controller0,
@@ -190,7 +194,7 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
               ),
 	    ),
 	    SizedBox(width: 20.0,),
-	    Container( // need to change this
+	    Container(
 	      width: 50.0,
 	      child: TextField(
 	        controller: controller1,
