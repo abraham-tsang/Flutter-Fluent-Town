@@ -57,14 +57,14 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
   AudioCache audioCache = AudioCache();
   TextEditingController controller = new TextEditingController();
   var language = 0;
-  var word = 0;
+  var word = 0; // need to change this
   var tested = [];
   var random = new Random();
 
   @override
   void initState(){
-    language = int.parse(widget.number.split('-')[1]) - 1;
-    tested.addAll(data[language].sublist(0, int.parse(widget.number.split('-')[0])));
+    language = int.parse(widget.number.split('-')[1]) - 1; // need to change this
+    tested.addAll(data[language].sublist(0, int.parse(widget.number.split('-')[0]))); // need to change this
     tested.shuffle(random);
     print(tested);
   }
@@ -94,7 +94,7 @@ class _MyStatefulHomePageState2 extends State<MyStatefulHomePage2>{
 	        style: TextStyle(
                   fontSize: 20.0,
                   height: 2.0,
-                  color: Colors.black    
+                  color: Colors.black
                 ),
 		onSubmitted: (String value){
 		  controller.clear();
@@ -145,7 +145,8 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
 
   AudioCache audioCache = AudioCache();
   double _currentSliderValue = 1;
-  TextEditingController controller = new TextEditingController();
+  TextEditingController controller0 = new TextEditingController();
+  TextEditingController controller1 = new TextEditingController();
   TextEditingController controller2 = new TextEditingController();
   var number2;
   var dropdownValue;
@@ -175,17 +176,31 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
               ),
 	    ),
 	    SizedBox(width: 20.0,),
-	    Container(
-	      width: 170.0,
+	    Container( // need to change this
+	      width: 70.0,
 	      child: TextField(
-	        controller: controller,
+	        controller: controller0,
                 keyboardType: TextInputType.number,
 	        style: TextStyle(
                   fontSize: 20.0,
                   height: 2.0,
                   color: Colors.black    
                 ),
-		decoration: InputDecoration(hintText: "Amount of words",),
+		decoration: InputDecoration(hintText: "Start",),
+              ),
+	    ),
+	    SizedBox(width: 20.0,),
+	    Container( // need to change this
+	      width: 50.0,
+	      child: TextField(
+	        controller: controller1,
+                keyboardType: TextInputType.number,
+	        style: TextStyle(
+                  fontSize: 20.0,
+                  height: 2.0,
+                  color: Colors.black    
+                ),
+		decoration: InputDecoration(hintText: "End",),
               ),
 	    ),
 	    RaisedButton(
@@ -194,7 +209,7 @@ class _MyStatefulHomePageState extends State<MyStatefulHomePage>{
                 print(dropdownValue);
 	        Navigator.push(
 	          context,
-	          MaterialPageRoute(builder: (context) => MyStatefulHomePage2(number: controller.text + '-' + controller2.text)),
+	          MaterialPageRoute(builder: (context) => MyStatefulHomePage2(number: controller0.text + '-' + controller1.text + '-' + controller2.text)),
 	        );
               },
 	    ),
